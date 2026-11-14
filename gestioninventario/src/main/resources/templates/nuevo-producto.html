@@ -1,0 +1,13 @@
+
+    @GetMapping("/nuevo-producto")
+    public String nuevoProducto() {
+        return "nuevo-producto";
+    }
+
+    @PostMapping("/guardar-producto")
+    public String guardarProducto(Producto producto) {
+        productoRepository.save(producto);
+        return "redirect:/";
+    }
+}
+        
