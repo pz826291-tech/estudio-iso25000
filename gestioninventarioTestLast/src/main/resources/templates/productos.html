@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión de Inventario</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .contenedor {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #cccccc;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 25px;
+        }
+
+        th, td {
+            border: 1px solid #cccccc;
+            padding: 12px;
+            text-align: center;
+        }
+
+        th {
+            background-color: #eeeeee;
+        }
+
+        .vacio {
+            text-align: center;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="contenedor">
+
+    <h1>Gestión de Inventario</h1>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Stock</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr th:each="producto : ${productos}">
+                <td th:text="${producto.id}"></td>
+                <td th:text="${producto.nombre}"></td>
+                <td th:text="${producto.descripcion}"></td>
+                <td th:text="${producto.precio}"></td>
+                <td th:text="${producto.stock}"></td>
+            </tr>
+
+            <tr th:if="${#lists.isEmpty(productos)}">
+                <td colspan="5" class="vacio">
+                    No existen productos registrados.
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+</div>
+
+</body>
+</html>
